@@ -69,7 +69,7 @@ class VehicleController {
             color,
             km,
             price,
-        } = await await vehicle.update(request.body);
+        } = await await vehicle.update(request.body.car);
 
         return response
             .status(200)
