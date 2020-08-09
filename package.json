@@ -1,0 +1,29 @@
+{
+    "name": "teste-traders-club",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "scripts": {
+        "start": "sucrase-node ./src/server",
+        "dev": "nodemon ./src/server/index.js"
+    },
+    "dependencies": {
+        "cors": "^2.8.5",
+        "dotenv": "^8.2.0",
+        "express": "^4.17.1",
+        "morgan": "^1.10.0",
+        "pg": "^8.3.0",
+        "pg-hstore": "^2.3.3",
+        "sequelize": "^6.3.4",
+        "sucrase": "^3.15.0",
+        "yup": "^0.29.3"
+    },
+    "devDependencies": {
+        "eslint": "^7.6.0",
+        "eslint-config-airbnb-base": "^14.2.0",
+        "eslint-plugin-import": "^2.22.0",
+        "nodemon": "^2.0.4",
+        "prettier": "^2.0.5",
+        "sequelize-cli": "^6.2.0"
+    }
+}
