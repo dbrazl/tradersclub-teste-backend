@@ -5,7 +5,8 @@
     "license": "MIT",
     "scripts": {
         "start": "sucrase-node ./src/server",
-        "dev": "nodemon ./src/server/index.js"
+        "dev": "nodemon ./src/server/index.js",
+        "heroku-postbuild": "sequelize db:migrate"
     },
     "dependencies": {
         "cors": "^2.8.5",
