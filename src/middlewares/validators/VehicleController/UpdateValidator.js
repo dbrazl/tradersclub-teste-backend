@@ -35,10 +35,10 @@ async function UpdateValidator(request, response, next) {
             title: 'string',
             model: 'string',
             brand: 'string',
-            year: 'number',
+            year: 'string',
             color: 'string',
-            km: 'number',
-            price: 'number',
+            km: 'string',
+            price: 'string',
         });
 
         await schemaCar.validate(request.body.car, { abortEarly: false });
