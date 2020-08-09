@@ -10,6 +10,10 @@ import BrandController from '../controllers/BrandController';
 
 const route = new Router();
 
+route.get('/active', (request, response) =>
+    response.status(200).json({ active: true })
+);
+
 route.get('/cars', IndexVehicleValidator, VehicleController.index);
 route.post('/cars', StoreVehicleValidator, VehicleController.store);
 route.put('/cars/:car_id', UpdateVehicleValidator, VehicleController.update);
