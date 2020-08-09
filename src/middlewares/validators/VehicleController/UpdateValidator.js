@@ -11,6 +11,17 @@ async function UpdateValidator(request, response, next) {
             throw new CustomError(['O parâmetro id deve ser um número.']);
 
         const schema = Yup.object().shape({
+            car: Yup.object().required('Informe o carro'),
+        });
+
+        TypeForm.schema({
+            car: 'object',
+        });
+
+        await schema.validate(request.body, { abortEarly: false });
+        await TypeForm.validate(request.body);
+
+        const schemaCar = Yup.object().shape({
             title: Yup.string(),
             model: Yup.string(),
             brand: Yup.string(),
@@ -30,8 +41,8 @@ async function UpdateValidator(request, response, next) {
             price: 'number',
         });
 
-        await schema.validate(request.body, { abortEarly: false });
-        await TypeForm.validate(request.body);
+        await schemaCar.validate(request.body.car, { abortEarly: false });
+        await TypeForm.validate(request.body.car);
 
         return next();
     } catch (error) {
