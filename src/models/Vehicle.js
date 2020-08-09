@@ -19,6 +19,10 @@ class Vehicle extends Model {
 
         return this;
     }
+
+    static associate(models) {
+        this.belongsTo(models.Brand, { foreignKey: 'brand_id_fk' });
+    }
 }
 
 export default Vehicle;

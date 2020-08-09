@@ -1,5 +1,6 @@
 import Sequelize from 'sequelize';
 import Vehicle from '../models/Vehicle';
+import Brand from '../models/Brand';
 
 class VehicleController {
     async index(request, response) {
@@ -26,13 +27,20 @@ class VehicleController {
     }
 
     async store(request, response) {
-        const { model } = request.body.car;
+        const { model, brand: name } = request.body.car;
 
         const finded = await Vehicle.findOne({ where: { model } });
         if (finded)
             return response.status(401).json({
-                message: 'Não foi possível criar o veículo',
+                message: 'Não foi possível criar o veículo.',
                 reasons: ['O modelo já foi cadastrado.'],
+            });
+
+        const brand = await Brand.findOne({ where: { name } });
+        if (!brand)
+            return response.status(401).json({
+                message: 'Não é possível criar o veículo.',
+                reasons: ['A marca informada não está cadastrada.'],
             });
 
         const created = await Vehicle.create(request.body.car);
@@ -45,7 +53,7 @@ class VehicleController {
     async update(request, response) {
         const { car_id } = request.params;
 
-        const vehicle = await Vehicle.findByPk(1);
+        const vehicle = await Vehicle.findByPk(car_id);
         if (!vehicle)
             return response.status(401).json({
                 message: 'Não foi possível atualizar o veículo.',
