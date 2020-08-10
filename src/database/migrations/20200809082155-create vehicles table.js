@@ -13,12 +13,12 @@ module.exports = {
             title: {
                 type: Sequelize.STRING,
                 allowNull: false,
+                unique: true,
             },
 
             model: {
                 type: Sequelize.STRING,
                 allowNull: false,
-                unique: true,
             },
 
             brand: {

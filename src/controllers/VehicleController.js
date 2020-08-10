@@ -27,13 +27,13 @@ class VehicleController {
     }
 
     async store(request, response) {
-        const { model, brand: name } = request.body.car;
+        const { title, brand: name } = request.body.car;
 
-        const finded = await Vehicle.findOne({ where: { model } });
+        const finded = await Vehicle.findOne({ where: { title } });
         if (finded)
             return response.status(401).json({
                 message: 'Não foi possível criar o veículo.',
-                reasons: ['O modelo já foi cadastrado.'],
+                reasons: ['O carro já foi cadastrado.'],
             });
 
         const brand = await Brand.findOne({ where: { name } });
